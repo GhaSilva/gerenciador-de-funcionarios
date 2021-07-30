@@ -15,6 +15,13 @@ public class Cargo {
 	private Integer id;
 	private String descricao;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Id: " + id + " | Descricao: " + descricao;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}

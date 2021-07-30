@@ -22,15 +22,20 @@ public class CrudCargoService {
 			System.out.println("0 - Sair");
 			System.out.println("1 - Salvar");
 			System.out.println("2 - Atualizar");
+			System.out.println("2 - Vizualizar");
 			
 			int action = scanner.nextInt();
-			if(action == 1) {
+			switch (action) {
+			case 1: 
 				salvar(scanner);
-			}
-			if(action == 2) {
+				break;
+			case 2:
 				atualizar(scanner);
-			}
-			else {
+				break;
+			case 3:
+				vizualizar();
+				break;
+			default:
 				system = false;
 				break;
 			}
@@ -59,9 +64,13 @@ public class CrudCargoService {
 		cargo.setDescricao(descricao);
 		cargoRepository.save(cargo);
 		System.out.println("Atualizado com Sucesso");
-		
-		
-		
-		
 	}
+	
+	public void vizualizar() {
+		Iterable<Cargo> cargos = cargoRepository.findAll();
+		for (Cargo cargo : cargos) {
+			System.out.println(cargo);
+		}
+	}
+	
 }
